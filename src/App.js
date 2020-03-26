@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import Home from './components/pages/home/Home';
+import OnlineCourses from './components/pages/OnlineCourses';
+import Coaching from './components/pages/Coaching';
+import Blog from './components/pages/Blog';
+import AboutMe from './components/pages/AboutMe';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+
+
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='App'>
+        <Navbar />
+          <Switch>
+            <Route exact path='/home' component={Home} />
+            <Route exact path='/online-courses' component={OnlineCourses} />
+            <Route exact path='/coaching' component={Coaching} />
+            <Route exact path='/blog' component={Blog} />
+            <Route exact path='/about-me' component={AboutMe} />
+            <Redirect to='/home' />
+          </Switch>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
